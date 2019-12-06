@@ -7,16 +7,16 @@ import (
 
 func PasswordValid(pass int) bool {
 	ok := false
-	upper := '0'
+	ceiling := '0'
 	currentChar := '0'
 	currentCharCount := 0
 	text := strconv.Itoa(pass)
 
 	for _, char := range text {
-		if char < upper {
+		if char < ceiling {
 			return false
 		}
-		upper = char
+		ceiling = char
 
 		if currentChar != char {
 			if currentCharCount == 2 {
