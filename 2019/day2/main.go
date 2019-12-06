@@ -1,9 +1,8 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+	"io/ioutil"
 	"strconv"
 	"strings"
 )
@@ -77,30 +76,21 @@ func FindOutputWithLimit(limit, output int, initial *string) (*int, error) {
 }
 
 func main() {
-	file, err := os.Open("input.txt")
+	content, err := ioutil.ReadFile("input.txt")
 	if err != nil {
 		panic(err)
 	}
-	defer file.Close()
+	text := string(content)
 
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		contents := scanner.Text()
-
-		intcode, err := RunIntcode(12, 2, &contents)
-		if err != nil {
-			panic(err)
-		}
-		output, err := FindOutputWithLimit(100, 19690720, &contents)
-		if err != nil {
-			panic(err)
-		}
-
-		fmt.Printf("Intcode: %v\n", *intcode)
-		fmt.Printf("Output: %v\n", *output)
-	}
-
-	if err := scanner.Err(); err != nil {
+	intcode, err := RunIntcode(12, 2, &text)
+	if err != nil {
 		panic(err)
 	}
+	output, err := FindOutputWithLimit(100, 19690720, &text)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Intcode: %v\n", *intcode)
+	fmt.Printf("Output: %v\n", *output)
 }
