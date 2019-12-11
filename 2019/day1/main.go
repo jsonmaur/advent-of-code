@@ -3,13 +3,12 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
 	"os"
 	"strconv"
 )
 
-func FuelNeededByMass(mass *float64) float64 {
-	fuel := math.Floor(*mass/3) - 2
+func FuelNeededByMass(mass *int) int {
+	fuel := (*mass / 3) - 2
 	if fuel <= 0 {
 		return 0
 	}
@@ -24,21 +23,20 @@ func main() {
 	}
 	defer file.Close()
 
-	var fuel float64
-
+	total := 0
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		mass, err := strconv.ParseFloat(scanner.Text(), 64)
+		mass, err := strconv.Atoi(scanner.Text())
 		if err != nil {
 			panic(err)
 		}
 
-		fuel += FuelNeededByMass(&mass)
+		total += FuelNeededByMass(&mass)
 	}
 
 	if err := scanner.Err(); err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("Fuel Needed: %f\n", fuel)
+	fmt.Printf("Fuel Needed: %d\n", total)
 }
