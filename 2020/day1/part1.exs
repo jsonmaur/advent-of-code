@@ -1,6 +1,6 @@
 defmodule Part1 do
   def product_of_sum([head | tail], sum) do
-    target = 2020 - head
+    target = sum - head
 
     if not Enum.member?(tail, target) do
       product_of_sum(tail, sum)
