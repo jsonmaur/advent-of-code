@@ -19,10 +19,3 @@ defmodule Part2 do
     total
   end
 end
-
-data =
-  File.read!("#{Path.dirname(__ENV__.file)}/input.txt")
-  |> String.split("\n", trim: true)
-
-total = Part2.count_valid(data, 0)
-IO.puts("There are a total of #{total} valid passwords")

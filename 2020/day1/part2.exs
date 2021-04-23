@@ -8,11 +8,3 @@ defmodule Part2 do
         do: {x, y, z, x * y * z}
   end
 end
-
-data =
-  File.read!("#{Path.dirname(__ENV__.file)}/input.txt")
-  |> String.split("\n", trim: true)
-  |> Enum.map(&String.to_integer/1)
-
-[{x, y, z, product}] = Part2.product_of_sum(data, 2020)
-IO.puts("Product of #{x}, #{y}, and #{z} is #{product}")

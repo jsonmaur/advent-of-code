@@ -13,11 +13,3 @@ defmodule Part1 do
     raise "No numbers create a sum of #{sum}"
   end
 end
-
-data =
-  File.read!("#{Path.dirname(__ENV__.file)}/input.txt")
-  |> String.split("\n", trim: true)
-  |> Enum.map(&String.to_integer/1)
-
-{x, y, product} = Part1.product_of_sum(data, 2020)
-IO.puts("Product of #{x} and #{y} is #{product}")
