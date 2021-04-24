@@ -1,10 +1,9 @@
-DAY=4
-PART=2
+DAY=5
 
 .PHONY: run format
 
 run:
-	@elixir -r day$(DAY)/part$(PART)*.exs
+	@elixir -r day$(DAY)/*.exs
 
 format:
 	@mix format **/*.exs

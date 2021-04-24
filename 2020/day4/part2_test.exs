@@ -1,6 +1,6 @@
 ExUnit.start(trace: true)
 
-defmodule Part1Test do
+defmodule Part2Test do
   use ExUnit.Case, async: true
 
   test "example" do
