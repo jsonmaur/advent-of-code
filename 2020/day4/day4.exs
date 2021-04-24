@@ -57,10 +57,10 @@ defmodule Passport do
   end
 end
 
-defmodule Part2 do
-  def count_valid(passports, total \\ 0)
+defmodule Aoc2020.Day4 do
+  def count_valid(passports, strict \\ false, total \\ 0)
 
-  def count_valid(passports, total) when is_bitstring(passports) do
+  def count_valid(passports, strict, total) when is_bitstring(passports) do
     passports =
       passports
       |> String.split("\n\n", trim: true)
@@ -74,19 +74,24 @@ defmodule Part2 do
         end)
       end)
 
-    count_valid(passports, total)
+    count_valid(passports, strict, total)
   end
 
-  def count_valid([head | tail], total) do
+  def count_valid([head | tail], strict, total) do
     try do
-      struct!(Passport, head) |> Passport.validate!()
-      count_valid(tail, total + 1)
+      if strict do
+        struct!(Passport, head) |> Passport.validate!()
+      else
+        struct!(Passport, head)
+      end
+
+      count_valid(tail, strict, total + 1)
     rescue
-      ArgumentError -> count_valid(tail, total)
+      ArgumentError -> count_valid(tail, strict, total)
     end
   end
 
-  def count_valid([], total) do
+  def count_valid([], _strict, total) do
     total
   end
 end

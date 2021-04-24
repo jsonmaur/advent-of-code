@@ -1,4 +1,4 @@
-defmodule Part2 do
+defmodule Aoc2020.Day3 do
   def count_trees(forest, slope, position \\ {0, 0}, trees \\ 0)
 
   def count_trees([head | tail], slope, {x, y}, trees) do

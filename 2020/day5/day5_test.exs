@@ -4,6 +4,7 @@ defmodule Aoc2020.Day5Test do
   use ExUnit.Case, async: true
 
   @data ["FBFBBFFRLR", "BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"]
+
   @input File.read!("#{Path.dirname(__ENV__.file)}/input.txt")
          |> String.split("\n", trim: true)
 
@@ -16,12 +17,12 @@ defmodule Aoc2020.Day5Test do
   end
 
   test "part 1" do
-    id = Aoc2020.Day5.highest_seat_id(@input)
-    IO.puts(" The highest seat ID is #{id}")
+    res = Aoc2020.Day5.highest_seat_id(@input)
+    IO.puts(" The highest seat ID is #{res}")
   end
 
   test "part 2" do
-    id = Aoc2020.Day5.my_seat_id(@input)
-    IO.puts(" Your seat ID is #{id}")
+    res = Aoc2020.Day5.my_seat_id(@input)
+    IO.puts(" Your seat ID is #{res}")
   end
 end
