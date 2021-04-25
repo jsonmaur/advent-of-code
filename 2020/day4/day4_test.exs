@@ -3,7 +3,7 @@ ExUnit.start(trace: true)
 defmodule Aoc2020.Day4Test do
   use ExUnit.Case, async: true
 
-  @data1 """
+  @example_input1 """
     ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
     byr:1937 iyr:2017 cid:147 hgt:183cm
 
@@ -19,7 +19,7 @@ defmodule Aoc2020.Day4Test do
     iyr:2011 ecl:brn hgt:59in
   """
 
-  @data2 """
+  @example_input2 """
     eyr:1972 cid:100
     hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926
 
@@ -51,12 +51,12 @@ defmodule Aoc2020.Day4Test do
   @input File.read!("#{Path.dirname(__ENV__.file)}/input.txt")
 
   test "example 1" do
-    res = Aoc2020.Day4.count_valid(@data1)
+    res = Aoc2020.Day4.count_valid(@example_input1)
     assert res == 2
   end
 
   test "example 2" do
-    res = Aoc2020.Day4.count_valid(@data2, true)
+    res = Aoc2020.Day4.count_valid(@example_input2, true)
     assert res == 4
   end
 

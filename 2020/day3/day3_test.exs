@@ -3,7 +3,7 @@ ExUnit.start(trace: true)
 defmodule Aoc2020.Day3Test do
   use ExUnit.Case, async: true
 
-  @data [
+  @example_input [
     "..##.......",
     "#...#...#..",
     ".#....#..#.",
@@ -21,12 +21,12 @@ defmodule Aoc2020.Day3Test do
          |> String.split("\n", trim: true)
 
   test "example 1" do
-    res = Aoc2020.Day3.count_trees(@data, {3, 1})
+    res = Aoc2020.Day3.count_trees(@example_input, {3, 1})
     assert res == 7
   end
 
   test "example 2" do
-    res = Aoc2020.Day3.count_trees_multi(@data, [{1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}])
+    res = Aoc2020.Day3.count_trees_multi(@example_input, [{1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}])
     assert res == 336
   end
 
