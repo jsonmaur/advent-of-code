@@ -1,4 +1,4 @@
-DAY=7
+DAY=8
 
 .PHONY: run format
 
